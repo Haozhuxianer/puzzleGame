@@ -15,7 +15,7 @@ public class GameUtil {
     public static ItemBeam blankItemBean = new ItemBeam();
 
     public static boolean isMoveable(int position){
-        int type = 2;
+        int type = PuzzleMain.type;
         int blankId = GameUtil.blankItemBean.getItemId() - 1;
         if(Math.abs(blankId - position) == type){
             return true;
@@ -47,7 +47,7 @@ public class GameUtil {
     public static void getPuzzleGenerator(){
         int index = 0;
         for (int i = 0 ; i < itemBeams.size() ; i++){
-            index = (int)(Math.random() * 2 * 2);
+            index = (int)(Math.random() * PuzzleMain.type * PuzzleMain.type);
             swapItem(itemBeams.get(index) , GameUtil.blankItemBean);
         }
         List<Integer> data = new ArrayList<Integer>();

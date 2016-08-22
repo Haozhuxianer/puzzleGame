@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final int RESULT_IMAGE = 100;//返回本地图库
     private static final int RESULT_CAMARA = 200;//返回相机
-    private static String TEMP_IMAGE_PATH;//Temp照片路劲
+    public static String TEMP_IMAGE_PATH;//Temp照片路劲
     private static final String IMAGE_TYPE = "image/*";
     private int type = 2;
     private String[] customItem = new String[]{"本地图册", "相册拍照"};
@@ -99,7 +99,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAdapter.setOnItemClickListener(new RecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(MainActivity.this , "OK" , Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this , PuzzleMain.class);
+                intent.putExtra("picSelectedID" , mResPicId[position]);
+                intent.putExtra("type" , type);
+                startActivity(intent);
             }
         });
     }
@@ -122,14 +125,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (id){
             case R.id.popup_item1:
                 diffi_cho.setText("2 X 2");
+                type = 2;
                 mPopupWindow.dismiss();
                 break;
             case R.id.popup_item2:
                 diffi_cho.setText("3 X 3");
+                type = 3;
                 mPopupWindow.dismiss();
                 break;
             case R.id.popup_item3:
                 diffi_cho.setText("4 X 4");
+                type = 4;
                 mPopupWindow.dismiss();
                 break;
         }
@@ -169,8 +175,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Cursor cursor = this.getContentResolver().query(data.getData(),null,null,null,null);
                 cursor.moveToFirst();
                 String imagePath = cursor.getString(cursor.getColumnIndex("_data"));
+                Intent intent = new Intent(MainActivity.this , PuzzleMain.class);
+                intent.putExtra("picPath" , imagePath);
+                intent.putExtra("type" , type);
+                startActivity(intent);
             }else if (requestCode == RESULT_CAMARA){
-
+                Intent intent = new Intent(MainActivity.this , PuzzleMain.class);
+                intent.putExtra("picPath" , TEMP_IMAGE_PATH);
+                intent.putExtra("type" , type);
+                startActivity(intent);
             }
         }
     }
