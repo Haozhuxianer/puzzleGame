@@ -91,9 +91,9 @@ public class GameUtil {
 
     public static boolean isSuccess(){
         for(ItemBeam tempBeam : GameUtil.itemBeams){
-            if(tempBeam.getBitmapId() != 0 && (tempBeam.getBitmapId()) == tempBeam.getBitmapId()){
+            if(tempBeam.getBitmapId() != 0 && (tempBeam.getItemId()) == tempBeam.getBitmapId()){
                 continue;
-            }else if(tempBeam.getBitmapId() == 0 && tempBeam.getItemId() == 2 * 2){
+            }else if(tempBeam.getBitmapId() == 0 && tempBeam.getItemId() == PuzzleMain.type * PuzzleMain.type){
                 continue;
             }else{
                 return  false;

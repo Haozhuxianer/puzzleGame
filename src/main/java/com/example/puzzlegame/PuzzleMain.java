@@ -252,8 +252,5 @@ public class PuzzleMain extends AppCompatActivity implements View.OnClickListene
             bitmapItemLists.add(temp.getBitmap());
         }
     }
-    /**
-     *
-     */
 
 }

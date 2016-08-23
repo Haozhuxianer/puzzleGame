@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         builder.create().show();
     }
-    /*
+    /**
     *调用图库相机回掉方法
      */
 

@@ -39,7 +39,7 @@ public class ImageUtil {
         PuzzleMain.lastBitmap = bitmapItems.get(type * type - 1);
         bitmapItems.remove(type * type -1);
         GameUtil.itemBeams.remove(type * type - 1);
-        Bitmap blankBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.pic1);
+        Bitmap blankBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.pic_blank);
         blankBitmap = Bitmap.createBitmap(blankBitmap , 0 , 0 , itemWidth , itemHeight);
         bitmapItems.add(blankBitmap);
         GameUtil.itemBeams.add(new ItemBeam(type * type, 0 , blankBitmap));
